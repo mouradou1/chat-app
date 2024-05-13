@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ContactsWidget extends StatefulWidget {
-  const ContactsWidget({Key? key}) : super(key: key);
+  const ContactsWidget({super.key});
 
   @override
   _ContactsWidgetState createState() => _ContactsWidgetState();
@@ -31,7 +31,7 @@ class _ContactsWidgetState extends State<ContactsWidget> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             'Contacts',
           ),
           leading: IconButton(

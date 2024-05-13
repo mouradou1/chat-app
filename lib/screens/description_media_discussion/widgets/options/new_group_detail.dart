@@ -11,7 +11,7 @@ class NewGroupDetailModel {
 }
 
 class NewGroupDetailWidget extends StatefulWidget {
-  const NewGroupDetailWidget({Key? key}) : super(key: key);
+  const NewGroupDetailWidget({super.key});
 
   @override
   _NewGroupDetailWidgetState createState() => _NewGroupDetailWidgetState();
@@ -71,7 +71,7 @@ class _NewGroupDetailWidgetState extends State<NewGroupDetailWidget> {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
-          child: Text(label, style: Theme.of(context).textTheme.subtitle1),
+          child: Text(label, style: Theme.of(context).textTheme.titleMedium),
         ),
         TextField(
           controller: controller,
@@ -90,7 +90,7 @@ class _NewGroupDetailWidgetState extends State<NewGroupDetailWidget> {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
-          child: Text(label, style: Theme.of(context).textTheme.subtitle1),
+          child: Text(label, style: Theme.of(context).textTheme.titleMedium),
         ),
         DropdownButtonFormField<String>(
           value: _model.dropDownValue,
@@ -120,7 +120,7 @@ class _NewGroupDetailWidgetState extends State<NewGroupDetailWidget> {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
-          child: Text(label, style: Theme.of(context).textTheme.subtitle1),
+          child: Text(label, style: Theme.of(context).textTheme.titleMedium),
         ),
         TextField(
           controller: controller,

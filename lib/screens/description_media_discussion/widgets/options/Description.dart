@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../model/description.dart'; // Ensure this model correctly handles the business logic
 
 class GroupMediaDescriptionWidget extends StatefulWidget {
-  const GroupMediaDescriptionWidget({Key? key}) : super(key: key);
+  const GroupMediaDescriptionWidget({super.key});
 
   @override
   State<GroupMediaDescriptionWidget> createState() => _GroupMediaDescriptionWidgetState();

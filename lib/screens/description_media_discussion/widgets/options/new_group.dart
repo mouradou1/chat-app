@@ -36,7 +36,7 @@ class _NewGroupWidgetState extends State<NewGroupWidget> {
             icon: const Icon(Icons.arrow_back, color: Colors.black),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          title: Text(
+          title: const Text(
             'Créer un nouveau groupe',
 
           ),

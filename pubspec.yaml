@@ -40,7 +40,12 @@ dependencies:
   onboarding: ^4.0.2
   dash_chat_2: ^0.0.20
   image_picker: ^1.0.4
+  file_picker: ^8.0.3
+  intl: 0.18.1
+  pdfx: ^2.6.0
+  flutter_document_picker: ^5.2.3
 
+  video_player: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

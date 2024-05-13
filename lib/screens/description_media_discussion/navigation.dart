@@ -15,6 +15,12 @@ class TOnBoardingNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(OnBoardingControllerGroupOptions());
 
+    void navigateToPlusOption() {
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => const PlusOption(),
+      ));
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -22,13 +28,20 @@ class TOnBoardingNavigationBar extends StatelessWidget {
           icon: const Icon(Icons.arrow_back_rounded, color: Color(0xFF2A343D)),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: const Text('Nom de group', style: TextStyle(color: Color(0xFF2A343D))),
+        title: GestureDetector(
+          onTap: navigateToPlusOption,
+          child: const Text(
+            'Nom de group',
+            style: TextStyle(color: Color(0xFF2A343D)),
+          ),
+        ),
         actions: <Widget>[
           PopupMenuButton<String>(
             onSelected: (String result) {
               // Action based on selection
               print(result); // This prints the selected option to the console
-              handleMenuSelection(context, result); // Replace or expand this function based on your needs
+              handleMenuSelection(context,
+                  result); // Replace or expand this function based on your needs
             },
             itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
               const PopupMenuItem<String>(
@@ -62,7 +75,7 @@ class TOnBoardingNavigationBar extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _buildOnboardingButton(context, 0, controller, 'Description'),
+                _buildOnboardingButton(context, 0, controller, 'Fichier'),
                 _buildOnboardingButton(context, 1, controller, 'Descution'),
                 _buildOnboardingButton(context, 2, controller, 'Media'),
               ],
@@ -71,26 +84,26 @@ class TOnBoardingNavigationBar extends StatelessWidget {
           Expanded(
             child: Stack(
               children: [
-              /// Horizontal Scrollable Pages
-              PageView(
-              controller: controller.pageController,
-              onPageChanged: controller.updatePageIndicator,
-              children:  [
-                const GroupMediaDescriptionSuitWidget(),
-                GroupChatScreen(),
-                const GroupMediaWidget(),
-
+                /// Horizontal Scrollable Pages
+                PageView(
+                  controller: controller.pageController,
+                  onPageChanged: controller.updatePageIndicator,
+                  children: [
+                    PdfListScreen(),
+                    GroupChatScreen(),
+                    GroupMediaWidget(),
+                  ],
+                )
               ],
-            )
-            ],
-          ),
+            ),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildOnboardingButton(BuildContext context, int pageIndex, OnBoardingControllerGroupOptions controller, String name) {
+  Widget _buildOnboardingButton(BuildContext context, int pageIndex,
+      OnBoardingControllerGroupOptions controller, String name) {
     return Obx(() {
       bool isSelected = controller.currentPageIndex.value == pageIndex;
       return InkWell(
@@ -118,10 +131,7 @@ class TOnBoardingNavigationBar extends StatelessWidget {
     });
   }
 
-
-
-
-  void handleMenuSelection(BuildContext context,String choice) {
+  void handleMenuSelection(BuildContext context, String choice) {
     // This function can handle various actions based on the menu choice
     // Example of navigating or displaying a message
     switch (choice) {
@@ -136,8 +146,12 @@ class TOnBoardingNavigationBar extends StatelessWidget {
           barrierDismissible: false, // User must tap button!
           builder: (BuildContext dialogContext) {
             return AlertDialog(
-              title: const Text('Attention !', style: TextStyle(color: Colors.redAccent),),
-              content: const Text('Vous êtes sur le point de supprimer ce groupe de messages. Cette action est irréversible. Voulez-vous continuer ?'),
+              title: const Text(
+                'Attention !',
+                style: TextStyle(color: Colors.redAccent),
+              ),
+              content: const Text(
+                  'Vous êtes sur le point de supprimer ce groupe de messages. Cette action est irréversible. Voulez-vous continuer ?'),
               actions: <Widget>[
                 TextButton(
                   child: const Text('Oui'),
@@ -163,8 +177,12 @@ class TOnBoardingNavigationBar extends StatelessWidget {
           barrierDismissible: false, // User must tap button!
           builder: (BuildContext dialogContext) {
             return AlertDialog(
-              title: const Text('Confirmation !', style: TextStyle(color: CupertinoColors.systemYellow),),
-              content: const Text(' Veuillez mettre à jour le statut du groupe et fournir une brève description du sujet de discussion et un résumé '),
+              title: const Text(
+                'Confirmation !',
+                style: TextStyle(color: CupertinoColors.systemYellow),
+              ),
+              content: const Text(
+                  ' Veuillez mettre à jour le statut du groupe et fournir une brève description du sujet de discussion et un résumé '),
               actions: <Widget>[
                 TextButton(
                   child: const Text('Ok'),
@@ -188,7 +206,7 @@ class TOnBoardingNavigationBar extends StatelessWidget {
         break;
       case 'Plus':
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => const PlusOption(),
+          builder: (context) => PlusOption(),
         ));
         break;
       default:

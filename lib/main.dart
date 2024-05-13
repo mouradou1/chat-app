@@ -25,21 +25,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
@@ -48,18 +33,18 @@ class MyApp extends StatelessWidget {
         'contacts': (context) => const ContactsWidget(),
         'detail': (context) => const NewGroupWidget(),
         'detail2': (context) => const NewGroupDetailWidget(),
-        'groupChatScreen': (context) =>  GroupChatScreen(),
-        'chatScreen': (context) =>  const OnBoardingScreen(),
-        'groupMediaDescriptionWidget': (context) =>  const GroupMediaDescriptionWidget(),
-        'groupMediaDescriptionSuit': (context) =>  const GroupMediaDescriptionSuitWidget(),
-        'groupMedia': (context) =>  const GroupMediaWidget(),
-        'groupChatOptions': (context) =>  const TOnBoardingNavigationBar(),
-        'plusOption': (context) =>  const PlusOption(),
-        'one-to-one-chat': (context) =>   ChatScreen(),
+        'groupChatScreen': (context) => GroupChatScreen(),
+        'chatScreen': (context) => const OnBoardingScreen(),
+        'groupMediaDescriptionWidget': (context) =>
+            const GroupMediaDescriptionWidget(),
+        'groupMediaDescriptionSuit': (context) => PdfListScreen(),
+        'groupMedia': (context) => const GroupMediaWidget(),
+        'groupChatOptions': (context) => const TOnBoardingNavigationBar(),
+        'plusOption': (context) => PlusOption(),
+        'one-to-one-chat': (context) => const ChatScreen(),
 
         // Define the route
       },
     );
   }
 }
-

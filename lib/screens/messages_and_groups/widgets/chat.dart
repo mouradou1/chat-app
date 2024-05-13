@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-
-import 'group_chat.dart'; // Assuming this exists
 
 class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({Key? key}) : super(key: key);
+  const HomePageWidget({super.key});
 
   @override
   _HomePageWidgetState createState() => _HomePageWidgetState();
@@ -25,19 +22,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 itemCount: 5,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) => _buildMessageItem(context, index + 1),
+                itemBuilder: (context, index) =>
+                    _buildMessageItem(context, index + 1),
               ),
             ],
           ),
         ),
-
       ),
     );
   }
 
-
-
-  Widget _buildButton(BuildContext context, String text, Widget destination, bool isLight) {
+  Widget _buildButton(
+      BuildContext context, String text, Widget destination, bool isLight) {
     return Expanded(
       child: Container(
         decoration: BoxDecoration(
@@ -49,12 +45,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           ),
         ),
         child: InkWell(
-          onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => destination)),
+          onTap: () => Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => destination)),
           child: Center(
             child: Text(
               text,
               style: const TextStyle(
-                fontFamily: 'Outfit', // Assuming you have this font, or change as needed
+                fontFamily:
+                    'Outfit', // Assuming you have this font, or change as needed
                 color: Color(0xFF57636C),
                 fontSize: 14,
                 letterSpacing: 0,
@@ -68,49 +66,50 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   }
 
   Widget _buildMessageItem(BuildContext context, int userNumber) {
-  return InkWell(
-  onTap: () {
-    Navigator.of(context).pushNamed('one-to-one-chat');},
-  child: ListTile(
-  leading: Stack(
-  children: [
-  const CircleAvatar(
-  backgroundImage: AssetImage('assets/images/user.png'),
-  ),
-  Positioned(
-  right: 0,
-  bottom: 0,
-  child: Container(
-  width: 13,
-  height: 13,
-  decoration: BoxDecoration(
-  color: const Color(0xFF46F25D),
-  shape: BoxShape.circle,
-  border: Border.all(color: Colors.white, width: 2),
-  ),
-  ),
-  ),
-  ],
-  ),
-  title: Text('User $userNumber'),
-  subtitle: const Text('Message'),
-  trailing: Column(
-  mainAxisSize: MainAxisSize.min,
-  children: [
-  const Text('3m ago'),
-  Container(
-  width: 20,
-  height: 20,
-  decoration: BoxDecoration(
-  color: const Color(0xFFE94242),
-  borderRadius: BorderRadius.circular(24),
-  ),
-  alignment: Alignment.center,
-  child: const Text('12', style: TextStyle(color: Colors.white)),
-  ),
-  ],
-  ),
-  ),
-  );
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).pushNamed('one-to-one-chat');
+      },
+      child: ListTile(
+        leading: Stack(
+          children: [
+            const CircleAvatar(
+              backgroundImage: AssetImage('assets/images/user.png'),
+            ),
+            Positioned(
+              right: 0,
+              bottom: 0,
+              child: Container(
+                width: 13,
+                height: 13,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF46F25D),
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.white, width: 2),
+                ),
+              ),
+            ),
+          ],
+        ),
+        title: Text('User $userNumber'),
+        subtitle: const Text('Message'),
+        trailing: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text('3m ago'),
+            Container(
+              width: 20,
+              height: 20,
+              decoration: BoxDecoration(
+                color: const Color(0xFFE94242),
+                borderRadius: BorderRadius.circular(24),
+              ),
+              alignment: Alignment.center,
+              child: const Text('12', style: TextStyle(color: Colors.white)),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
